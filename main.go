@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"strconv"
 	"strings"
 )
 
@@ -92,10 +93,27 @@ func main() {
 	physicsScore := scores[user.physics]
 	englishScore := scores[user.english]
 
-	totalScore := mathScore + chemistryScore + biologyScore + physicsScore + englishScore
+	totalOlevelScore := mathScore + chemistryScore + biologyScore + physicsScore + englishScore
 
-	println(totalScore)
+	fmt.Println(totalOlevelScore)
 
-	fmt.Println(user)
+	//Save the utme score
+	var utmeScore int64
+
+	for {
+		value, err := getUserInput(reader, "your UTME score")
+		i, strErr := strconv.ParseInt(value, 10, 32)
+		utmeScore = i
+		if strErr != nil {
+			fmt.Println("Invalid input. Please enter a number.")
+			continue
+		}
+		if err != nil {
+			fmt.Println("Error: ", err)
+		} else {
+			break
+		}
+	}
+	user.updateUtmeScore(utmeScore)
 
 }

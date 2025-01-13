@@ -9,7 +9,7 @@ type Composite struct {
 	biology   string
 	physics   string
 	english   string
-	utme      int32
+	utme      int64
 }
 
 func (c *Composite) updateName(name string) {
@@ -51,4 +51,9 @@ func createComposite() Composite {
 	}
 	fmt.Println("Student created successfully")
 	return student
+}
+
+func (c *Composite) updateUtmeScore(score int64) {
+	c.utme = score
+	fmt.Printf("Updated UTME score: %v\n", score)
 }
