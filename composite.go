@@ -3,18 +3,18 @@ package main
 import "fmt"
 
 type Composite struct {
-	name      string
-	maths     string
-	chemistry string
-	biology   string
-	physics   string
-	english   string
-	utme      int64
+	name         string
+	maths        string
+	chemistry    string
+	biology      string
+	physics      string
+	english      string
+	utme         int64
+	numOfSitting int32
 }
 
 func (c *Composite) updateName(name string) {
 	c.name = name
-	fmt.Println("Updated username: ", c.name)
 }
 
 func (c *Composite) updateSubjectScore(key string, value string) {
@@ -35,25 +35,26 @@ func (c *Composite) updateSubjectScore(key string, value string) {
 			c.updateSubjectScore(key, value)
 		}
 	}
-	fmt.Printf("Updated composite: %v: %v\n", key, value)
 
 }
 
 func createComposite() Composite {
 	student := Composite{
-		name:      "",
-		maths:     "",
-		chemistry: "",
-		biology:   "",
-		physics:   "",
-		english:   "",
-		utme:      0,
+		name:         "",
+		maths:        "",
+		chemistry:    "",
+		biology:      "",
+		physics:      "",
+		english:      "",
+		utme:         0,
+		numOfSitting: 1,
 	}
-	fmt.Println("Student created successfully")
 	return student
 }
 
 func (c *Composite) updateUtmeScore(score int64) {
 	c.utme = score
-	fmt.Printf("Updated UTME score: %v\n", score)
+}
+func (c *Composite) updateNumOfSitting(num int32) {
+	c.numOfSitting = num
 }
